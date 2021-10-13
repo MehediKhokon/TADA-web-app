@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body style="font-size: 20px;">
+
+    <center>
+
+        <h2><strong> XYZ Company </strong></h2>
+        <p>|- Dhaka-1206, Bangladesh -|</p>
+        <p><strong>Contact: 0192203343600</strong></p>
+        <p>====================================</p>
+        <h3>TA/DA Bill Receipt </h3>
+        <br>
+    </center>
+    <table style="padding: 0 auto; margin-left: 200px; font-size: 18px;">
+        <tr>
+            <td>Date: </td>
+
+            <td style="margin-left: -150px;">{{tada.date}}</td>
+        </tr>
+        <tr>
+            <td>Name: </td>
+
+            <td style="margin-left: -150px;">{{tada.employee.get_full_name}}</td>
+        </tr>
+
+        <tr>
+            <td>Travel Cost: </td>
+
+            <td style="margin-left: -150px;">{{tada.travel_cost}}/-</td>
+        </tr>
+
+        <tr>
+            <td>Lunch Cost: </td>
+
+            <td style="margin-left: -150px;">{{tada.lunch_cost}}/-</td>
+        </tr>
+        <tr>
+            <td>Instruments Cost: </td>
+
+            <td style="margin-left: -150px;">{{tada.instruments_cost}}/-</td>
+        </tr>
+
+        <tr>
+            <td>Total Bill: </td>
+
+            <td style="margin-left: -150px;">{{tada.get_total}}/- </td>
+        </tr>
+
+
+        <tr>
+            <td>Paid: </td>
+
+            <td style="margin-left: -150px; font-weight: 800;">{{tada.paid|upper}}
+            </td>
+        </tr>
+    </table>
+    <center>
+
+
+        <p>====================================</p>
+
+
+
+        <br>
+
+    </center>
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container m-5">
+    <h2 class="mb-5 text-center">TA/DA History of Employee</h2>
+
+    <a href="/create"><button class="btn btn-primary">Create New TADA</button></a>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Employee Name</th>
+                <th scope="col">Travel Cost</th>
+                <th scope="col">Lunch Cost</th>
+                <th scope="col">Instruments Cost</th>
+                <th scope="col">Total Cost</th>
+                <th scope="col">Paid</th>
+                <th scope="col">Report</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in tada %}
+
+
+            <tr>
+                <th scope="row">{{item.date}}</th>
+                <td>{{item.employee.get_full_name}}</td>
+                <td>{{item.travel_cost}}</td>
+                <td>{{item.lunch_cost}}</td>
+                <td>{{item.instruments_cost}}</td>
+
+                <td>{{item.get_total}}</td>
+                {% if item.paid == 'Paid' %}
+                <td>
+                    <button class="btn btn-success" disabled="disabled">{{item.paid}}</button>
+                </td>
+                {%else %}
+                <td>
+                    <form action="{% url 'tada-update' item.id %}" method="post">
+                        {% csrf_token %}
+                        <button class="btn btn-danger">{{item.paid}}</button>
+                    </form>
+                </td>
+                {% endif %}
+                <td>
+                    <a href="{% url 'tada-pdf' item.id %}">
+                        <button class="btn btn-outline-warning">Pdf</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
